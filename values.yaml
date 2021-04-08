@@ -1,10 +1,13 @@
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: kube-ops
+--- 
 env: master
-projects:
-  - name: tenants
+projects: 
+  - 
     description: "project for tenants"
-  - name: security
+    name: tenants
+  - 
     description: "project for sec bootstrap"
+    name: security
+spec: 
+  destination: 
+    namespace: kube-ops
+    server: "https://kubernetes.default.svc"
