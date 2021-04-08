@@ -3,7 +3,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: kube-ops
 env: master
-project:
+projects:
   - name: tenants
     description: "project for tenants"
   - name: security
