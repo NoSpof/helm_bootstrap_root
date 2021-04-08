@@ -1,26 +1,26 @@
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name:  prometheus
-#  namespace: {{ .Values.spec.destination.namespace }}
-#  finalizers:
-#  - resources-finalizer.argocd.argoproj.io
-#spec:
-#  destination:
-#    namespace: {{ .Values.spec.destination.namespace }}
-#    server: {{ .Values.spec.destination.server }}
-#  project: default
-#  source:
-#    path: .
-#    repoURL:
-#    targetRevision: 
-#    helm:
-#      valuesFiles:
-#      - common-values.yaml
-#      - {{ .Values.env }}-values.yaml
-#  syncPolicy:
-#    syncOptions:
-#      - CreateNamespace=true
-#    automated:
-#      prune: false
-#      selfHeal: false
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name:  prometheus
+  namespace: {{ .Values.spec.destination.namespace }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: {{ .Values.spec.destination.namespace }}
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/NoSpof/Tenants_bootstrap
+    targetRevision: {{ .Values.env }}
+    helm:
+      valuesFiles:
+      - common-values.yaml
+      - {{ .Values.env }}-values.yaml
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: false
+      selfHeal: false
