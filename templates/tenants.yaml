@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name:  prometheus
+  name:  tenantsBootstrap
   namespace: {{ .Values.spec.destination.namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
-  project: default
+  project: teambootstraping
   source:
     path: .
     repoURL: https://github.com/NoSpof/Tenants_bootstrap
