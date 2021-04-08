@@ -1,14 +1,14 @@
-{{- range .Values.project }}
+{{- range .Values.projects }}
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: {{ .Values.project.name }}
+  name: {{ .Values.projects.name }}
   namespace: {{ .Values.spec.destination.namespace }}
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  description:   {{ .Values.project.description }}
+  description:   {{ .Values.projects.description }}
   # Allow manifests to deploy from any Git repos
   sourceRepos:
   - '*'
@@ -39,7 +39,7 @@ spec:
   - name: read-only
     description: Read-only privileges to teambootstraping
     policies:
-    - p, proj:{{ .Values.teams.name }}:read-only, applications, get, {{ .Values.teams.name }}/*, allow
+    - p, proj:{{ .Values.projects.name }}:read-only, applications, get, {{ .Values.projects.name }}/*, allow
     groups:
     - my-oidc-group
   # A role which provides sync privileges to only the guestbook-dev application, e.g. to provide
@@ -47,6 +47,6 @@ spec:
   - name: ci-role
     description: Sync privileges for guestbook-dev
     policies:
-    - p, proj:{{ .Values.teams.name }}:ci-role, applications, sync, {{ .Values.teams.name }}/guestbook-dev, allow
+    - p, proj:{{ .Values.projects.name }}:ci-role, applications, sync, {{ .Values.projects.name }}/guestbook-dev, allow
     
   {{- end}}
