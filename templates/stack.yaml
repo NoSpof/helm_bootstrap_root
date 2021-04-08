@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
-  namespace: argocd
+  name: stack
+  namespace: kube-ops
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -11,6 +11,6 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    path: guestbook
-    repoURL: https://github.com/argoproj/argocd-example-apps
-    targetRevision: HEAD
+    path: .
+    repoURL: https://github.com/NoSpof/kubernetes_bootstrap
+    targetRevision: main
