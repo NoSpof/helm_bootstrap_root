@@ -1,12 +1,24 @@
 --- 
 env: master
 projects: 
-  - 
-    description: "project for tenants"
-    name: tenants
-  - 
-    description: "project for sec bootstrap"
-    name: security
+  -
+   description: "project for tenants"
+   name: teambootstraping
+  -
+   description: "project for sec bootstrap"
+   name: security
+  -
+   description: "project for backup bootstrap"
+   name: backup
+  -
+   description: "project for monitoring bootstrap"
+   name: monitoring
+  -
+   description: "project for CD bootstrap"
+   name: cd
+  -
+   description: "project for FinOps bootstrap"
+   name: finops
 spec: 
   destination: 
     namespace: kube-ops
